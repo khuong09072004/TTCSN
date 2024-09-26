@@ -1,9 +1,14 @@
 import './App.scss'
-
+import Header from '../src/common/Header/Header'
+import Footer from './common/Footer/Footer'
+import SliderItem from './components/SliderItem/SliderItem'
 function App() {
   return (
     <>
-      <h1>Hello World</h1>
+     <Header/>
+     
+     <SliderItem/>
+     <Footer/>
     </>
   )
 }
