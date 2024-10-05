@@ -1,9 +1,11 @@
 export const ApiConstant = {
-    auth:{
+    auth: {
         login: '/login'
     },
-    slider:{
+    slider: {
         getAll: '/images'
+    },
+    course:{
+        getAllCourse:'/courses'
     }
-
 }
