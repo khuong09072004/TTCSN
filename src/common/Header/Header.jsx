@@ -1,30 +1,38 @@
 import './Header.scss'
-import { IconWorld } from '@tabler/icons-react';
 import { IconSearch } from '@tabler/icons-react';
-import Logo from '../../assets/images/logo.png'
+import Logo from '../../assets/images/logo.png';
+import '../../i18n';
+import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
+    const { t } = useTranslation('header')
+    const navigate = useNavigate();
+
+    const handleClickSignIn = () => {
+        navigate('/signIn')
+    }
+    const handleClickSignUp = () =>{
+        navigate('/signUp')
+    }
 
     return (
         <>
             <nav className="navbar">
                 <div className="navbar-logo">
                     <a href="/">
-                        <img src={Logo} alt="Logo" className="logo" /> 
+                        <img src={Logo} alt="Logo" className="logo" />
                     </a>
                 </div>
                 <div className="navbar-search">
                     <button className="search-button">
                         <IconSearch stroke={2} />
                     </button>
-                    <input type="text" placeholder="Tìm kiếm nội dung bất kỳ" className='search-input' />
+                    <input type="text" placeholder={t('header1')} className='search-input' />
                 </div>
                 <div className="navbar-buttons">
-                    <button className="login-button">Đăng nhập</button>
-                    <button className="signup-button">Đăng ký</button>
-                    <button className="language-button">
-                        <IconWorld stroke={2} />
-                    </button>
+                    <button className="login-button" onClick={handleClickSignIn}>{t('header2')}</button>
+                    <button className="signup-button" onClick={handleClickSignUp}>{t('header3')}</button>
                 </div>
             </nav>
         </>
