@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Container, Typography } from "@mui/material";
-
 import { getAllItemCourse } from "../../apis/course";
 import Course from "../Course/Course";
 
