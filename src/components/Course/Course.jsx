@@ -137,11 +137,15 @@ const Course = ({ courses = [] }) => {
     };
 
     const [isFavorite, setIsFavorite] = useState(false);
-    const toggleFavorite = () => {
-        setIsFavorite((prev) => !prev);
+    const toggleFavorite = (courseId) => {
+        setIsFavorite((prevFavoriteas)=>({
+            ...prevFavoriteas,
+            [courseId]: !prevFavoriteas[courseId]
+
+        }));
     };
     const renderTooltipContent = (course) => (
-        <Box>
+        <Box >
             <Typography variant="subtitle1" sx={styles.courseName}>{course.name}</Typography>
             <span style={{ color: '#19C72B' }}>Updated:</span>
             <span style={{ color: 'darkgreen' }}>{course.date}</span>
@@ -162,8 +166,8 @@ const Course = ({ courses = [] }) => {
             </Typography>
             <Box sx={{ display: 'flex', marginBottom: '6px' }}>
                 <Button sx={styles.cart}>Add to cart</Button>
-                <Box onClick={toggleFavorite} sx={styles.circle}>
-                    {isFavorite ? (
+                <Box onClick={() => toggleFavorite(course.id)} sx={styles.circle}>
+                    {isFavorite[course.id] ? (
                         <FavoriteIcon sx={{ ...styles.heart, transform: 'scale(1.1)' }} />
                     ) : (
                         <FavoriteBorderIcon sx={styles.heart} />
