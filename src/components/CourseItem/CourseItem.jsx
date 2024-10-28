@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Container, Typography } from "@mui/material";
 import { getAllItemCourse } from "../../apis/course";
 import Course from "../Course/Course";
-
+import SkeletonList from "./CourseItemSkeleton";
 
 const CourseItem = () => {
     const [courses, setCourses] = useState([]);
@@ -10,15 +10,15 @@ const CourseItem = () => {
     const [error, setError] = useState(null);
 
     const LoadAllCourse = async () => {
-        setLoading(true); 
-        setError(null); 
+        setLoading(true);
+        setError(null);
         try {
             const res = await getAllItemCourse()
-            console.log('Response', res);
-            setCourses(res.data); 
+            console.log(res)
+            setCourses(res.data);
         } catch (error) {
             console.error('Error fetching courses:', error);
-            setError("Failed to load courses"); 
+            setError("Failed to load courses");
         } finally {
             setLoading(false);
         }
@@ -29,7 +29,7 @@ const CourseItem = () => {
     }, []);
 
     if (loading) {
-        return <Typography variant="h6">Đang tải khóa học...</Typography>; 
+       <SkeletonList/>
     }
 
     if (error) {
@@ -38,10 +38,10 @@ const CourseItem = () => {
 
     return (
         <Container>
-            <Typography variant="h4" gutterBottom>
+            <Typography variant="h4" gutterBottom >
                 What to learn next ?
             </Typography>
-            <Course courses={courses}/>
+            {loading ? (<SkeletonList />) : (<Course courses={courses} />)}
         </Container>
     );
 };

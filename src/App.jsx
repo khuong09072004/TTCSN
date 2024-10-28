@@ -1,13 +1,10 @@
 import './App.scss'
-import Header from '../src/common/Header/Header'
-import Footer from './common/Footer/Footer'
-import SliderItem from './components/SliderItem/SliderItem'
-import CourseItem from './components/CourseItem/CourseItem'
 import { useRoutes } from 'react-router-dom'
 import MainLayout from './layouts/MainLayout'
 import Home from './pages/Home/Home'
 import Login from './pages/Login/Login'
 import Register from './pages/Register/Register'
+import Categories from './pages/Categories/Categories'
 
 function App() {
 
@@ -20,7 +17,6 @@ function App() {
           path:'',
           element:<Home/>
         },
-       
       ],
     },
     {
@@ -30,8 +26,17 @@ function App() {
     {
       path:'/signUp',
       element:<Register/>
+    },
+    {
+      path: "/",
+      element: <MainLayout />,
+      children: [
+        {
+          path: '/category/:categoryId',
+          element: <Categories />
+        },
+      ]
     }
-    
   ])
   return (
     <>

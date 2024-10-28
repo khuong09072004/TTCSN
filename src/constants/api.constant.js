@@ -1,3 +1,4 @@
+
 export const ApiConstant = {
     auth: {
         login: '/login'
@@ -6,6 +7,10 @@ export const ApiConstant = {
         getAll: '/images'
     },
     course:{
-        getAllCourse:'/courses'
+        getAllCourse:'/allcourse',
+        getCourseByCategory:'/category/:categoryId',
+    },
+    categories:{
+        getAllCategories:'/categories',
     }
 }

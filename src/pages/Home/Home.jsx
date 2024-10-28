@@ -5,7 +5,6 @@ const Home = () =>{
         <>
         <SLider/>
         <CourseItem/>
-
         </>
     )
 }

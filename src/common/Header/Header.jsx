@@ -4,6 +4,7 @@ import Logo from '../../assets/images/logo.png';
 import '../../i18n';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
+import CategoryItem from './Category';
 
 const Header = () => {
     const { t } = useTranslation('header')
@@ -23,7 +24,8 @@ const Header = () => {
                     <a href="/">
                         <img src={Logo} alt="Logo" className="logo" />
                     </a>
-                </div>
+                </div>            
+                <CategoryItem />            
                 <div className="navbar-search">
                     <button className="search-button">
                         <IconSearch stroke={2} />
