@@ -5,6 +5,7 @@ import FiberManualRecordSharpIcon from '@mui/icons-material/FiberManualRecordSha
 import { formatCurrency } from '../../../../utils/utils';
 import styles from './styles';
 import TooltipFilter from '../TooltipFilter/TooltipFilter';
+import { useNavigate } from 'react-router-dom';
 
 CoursePaper.propTypes = {
     course: PropTypes.array,
@@ -16,6 +17,11 @@ const DotIcon = styled(FiberManualRecordSharpIcon)(({ theme }) => ({
 }));
 
 function CoursePaper({ course = [] }) {
+    const navigate = useNavigate();
+
+    const handleCourseClick = (courseId) => {
+        navigate(`/courses/${courseId}`);
+    };
     return (
         <div>
             {course.map(courseItem => (
@@ -36,7 +42,7 @@ function CoursePaper({ course = [] }) {
                         arrow: { sx: { color: 'grey' } } 
                     }}
                 >
-                    <div style={styles.container}>
+                    <div style={styles.container} onClick={()=>handleCourseClick(courseItem.id)}>
                         <Grid container>
                             <Grid item md={3}>
                                 <Card sx={styles.card}>

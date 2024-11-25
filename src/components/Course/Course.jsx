@@ -8,8 +8,15 @@ import RenderStar from '../Course/RenderStar/RenderStar';
 import RenderToolTipContent from '../Course/RenderToolTip/RenderToolTipContent';
 import styles from './stylesCourse';
 import settings from '../Course/SlideCourse/settings';
+import { useNavigate } from 'react-router-dom';
+
 
 const Course = ({ courses = [] }) => {
+    const navigate = useNavigate(); 
+
+    const handleCourseClick = (courseId) => {
+        navigate(`/courses/${courseId}`); 
+    };
     return (
         <div>
             {courses.map(category => (
@@ -21,7 +28,7 @@ const Course = ({ courses = [] }) => {
                         {category.courses.map(course => (
                             <div key={course.id}>
                                 <Tooltip
-                                    title={<RenderToolTipContent course={course} />}
+                                    title={<RenderToolTipContent course={course}/>}
                                     placement="right"
                                     arrow
                                     slotProps={{
@@ -36,7 +43,7 @@ const Course = ({ courses = [] }) => {
                                         arrow: { sx: { color: '#grey' } }
                                     }}
                                 >
-                                    <Card sx={{ maxWidth: '100%', height: 340, margin: 1 }}>
+                                    <Card sx={styles.card} onClick={()=>handleCourseClick(course.id)}>
                                         <CardMedia
                                             component="img"
                                             sx={styles.cardMedia}
@@ -70,25 +77,7 @@ const Course = ({ courses = [] }) => {
 };
 
 Course.propTypes = {
-    courses: PropTypes.arrayOf(
-        PropTypes.shape({
-            idCategory: PropTypes.number.isRequired,
-            category: PropTypes.string.isRequired,
-            courses: PropTypes.arrayOf(
-                PropTypes.shape({
-                    id: PropTypes.number.isRequired,
-                    name: PropTypes.string.isRequired,
-                    thumbnail: PropTypes.string.isRequired,
-                    star: PropTypes.number.isRequired,
-                    price: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-                    author: PropTypes.string.isRequired,
-                    content: PropTypes.arrayOf(PropTypes.string),
-                    date: PropTypes.string.isRequired,
-                    description: PropTypes.string.isRequired,
-                })
-            ).isRequired,
-        })
-    ),
+    courses: PropTypes.array
 };
 
 export default Course;

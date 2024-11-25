@@ -9,6 +9,7 @@ export const ApiConstant = {
     course:{
         getAllCourse:'/allcourse',
         getCourseByCategory:'/category/:categoryId',
+        getCourseById:'/courses/:courseId'
     },
     categories:{
         getAllCategories:'/categories',

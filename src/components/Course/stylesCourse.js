@@ -9,10 +9,15 @@ const styles = {
             filter: 'brightness(0.7)',
         },
     },
+    card: {
+        maxWidth: '100%',
+        height: 340,
+        margin: 1
+    },
     starContainer: {
         display: 'flex',
         alignItems: 'center',
-        fontWeight:'bold'
+        fontWeight: 'bold'
     },
     courseName: {
         fontWeight: 'bold',

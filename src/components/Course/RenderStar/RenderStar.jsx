@@ -5,6 +5,8 @@ import StarIcon from '@mui/icons-material/Star';
 RenderStar.propTypes = {
     numStars: PropTypes.number,
 };
+
+//hiển thị sao
 function RenderStar({numStars}) {
     const styles = {
         star: {

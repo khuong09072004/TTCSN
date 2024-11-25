@@ -33,6 +33,18 @@ const styles = {
         justifyContent: 'center',
         cursor: 'pointer',
         marginLeft: '1.5rem',
+    },
+    typo1: {
+        color: '#19C72B', fontSize: '14px'
+    },
+    typo2: {
+        color: 'darkgreen', fontSize: '14px'
+    },
+    box: {
+        display: 'flex',
+        marginBottom: '6px',
+        padding: '10px'
     }
+
 }
 export default styles

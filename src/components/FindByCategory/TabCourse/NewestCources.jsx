@@ -7,12 +7,17 @@ import styles from '../../Course/stylesCourse';
 import RenderStar from "../../Course/RenderStar/RenderStar";
 import { formatCurrency } from "../../../utils/utils";
 import { sortCourses } from "../../../utils/sortedDate";
+import { useNavigate } from "react-router-dom";
 NewestCources.propTypes = {
     course: PropTypes.array,
 };
 
 function NewestCources({ course = [] }) {
     const sortedCourse = sortCourses(course)
+    const navigate = useNavigate();
+    const handleCourseClick = (courseId) => {
+        navigate(`/courses/${courseId}`);
+    };
     return (
         <Container>
             <Slider {...settings}>
@@ -34,7 +39,7 @@ function NewestCources({ course = [] }) {
                                 arrow: { sx: { color: '#grey' } }
                             }}
                         >
-                            <Card sx={{ maxWidth: '100%', height: 350, margin: 1 }}>
+                            <Card sx={{ maxWidth: '100%', height: 350, margin: 1 }} onClick={() => handleCourseClick(course.id)}>
                                 <CardMedia
                                     component="img"
                                     sx={styles.cardMedia}

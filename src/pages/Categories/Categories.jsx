@@ -37,8 +37,6 @@ const Categories = () => {
 
     const queryParams = useMemo(() => {
         const params = queryString.parse(location.search);
-
-        // Chuyển đổi duration và price thành mảng nếu cần
         const price = Array.isArray(params.price) ? params.price : (params.price ? [params.price] : []);
         const duration = Array.isArray(params.duration) ? params.duration : (params.duration ? [params.duration] : []);
 

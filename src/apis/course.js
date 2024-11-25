@@ -5,6 +5,8 @@ const itemCourse = () => ({
     getAllItemCourse: async () => apiDefault.get(ApiConstant.course.getAllCourse),
     getCourseByCategory: async (categoryId) =>
         apiDefault.get(ApiConstant.course.getCourseByCategory.replace(':categoryId', categoryId)),
+    getCourseById: async (courseId) =>
+        apiDefault.get(ApiConstant.course.getCourseById.replace(':courseId', courseId))
 });
 
 const productApi = {
@@ -15,10 +17,12 @@ const productApi = {
             { params: newParams }
         );
         return {
-            data: productList.data, 
+            data: productList.data,
         };
     },
 };
 
-export const { getAllItemCourse, getCourseByCategory } = itemCourse();
+
+
+export const { getAllItemCourse, getCourseByCategory, getCourseById } = itemCourse();
 export default productApi;
